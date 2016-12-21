@@ -59,5 +59,4 @@ RUN mkdir /home/adv/wsn_setting
 VOLUME ["/home/adv/wsn_setting"]
 
 # set up adv as sudo
-RUN mkdir /home/adv
 WORKDIR /home/adv
