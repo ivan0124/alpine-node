@@ -48,7 +48,7 @@ RUN apk add --no-cache bash git openssh
 
 # install APIGateway
 RUN git clone https://github.com/ADVANTECH-Corp/APIGateway.git /home/adv/api_gw
-RUN cp api_gw/script/init_wsn_setting.sh /usr/local/bin/.
+#RUN cp /home/adv/api_gw/script/init_wsn_setting.sh /usr/local/bin/.
 
 #USER adv
 #Share folder with host
