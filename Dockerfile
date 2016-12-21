@@ -43,3 +43,21 @@ RUN apk add --no-cache curl make gcc g++ python linux-headers paxctl libgcc libs
   rm -rf /etc/ssl /node-${VERSION}.tar.gz /SHASUMS256.txt.asc /node-${VERSION} ${RM_DIRS} \
     /usr/share/man /tmp/* /var/cache/apk/* /root/.npm /root/.node-gyp /root/.gnupg \
     /usr/lib/node_modules/npm/man /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html
+
+RUN apk add --no-cache bash git openssh
+
+# install APIGateway
+RUN git clone https://github.com/ADVANTECH-Corp/APIGateway.git /home/adv/api_gw
+RUN cp api_gw/script/init_wsn_setting.sh /usr/local/bin/.
+
+#USER adv
+#Share folder with host
+RUN mkdir /home/adv/APIGateway
+VOLUME ["/home/adv/APIGateway"]
+
+RUN mkdir /home/adv/wsn_setting
+VOLUME ["/home/adv/wsn_setting"]
+
+# set up adv as sudo
+RUN mkdir /home/adv
+WORKDIR /home/adv
